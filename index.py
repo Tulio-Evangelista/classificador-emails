@@ -37,7 +37,8 @@ def index():
  
 
      try:
-    
+    print(" templates path:", app.template_folder)
+    print(" arquivos na raiz:", os.listdir(".")
         return render_template("index.html", category=category, response=response, email_text=email_text)
     except Exception as e:
         app.logger.error(f"Erro ao renderizar template: {e}")
