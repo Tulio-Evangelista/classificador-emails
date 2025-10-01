@@ -28,7 +28,7 @@ RESPONSES = {
     "Improdutivo": "Obrigado pelo seu contato! Sua mensagem foi recebida."
 }
 
-@app.route("/qualquercoisa", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     category = None
     response = None
