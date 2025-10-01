@@ -67,5 +67,3 @@ def index():
     
     return render_template("index.html", category=category, response=response, email_text=email_text)
 
-
-    application = app
