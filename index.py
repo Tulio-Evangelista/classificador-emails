@@ -67,9 +67,5 @@ def index():
     
     return render_template("index.html", category=category, response=response, email_text=email_text)
 
-    
 
-
-if _name_ != "_main_":
-    # O Vercel vai procurar pelo objeto 'app'
     application = app
