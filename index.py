@@ -36,34 +36,11 @@ def index():
     
  
 
-    if request.method == "POST":
-       
-        email_text = request.form.get("email_text", "")
-
-       
-        email_file = request.files.get("email_file")
-        if email_file:
-            filename = email_file.filename.lower()
-            if filename.endswith(".pdf"):
-                email_text = read_pdf(email_file)
-            elif filename.endswith(".txt"):
-                email_text = email_file.read().decode("utf-8")
-            else:
-                email_text = ""  
-
-        if email_text.strip():
-            processed_text = preprocess_email(email_text)
-          
-            if classifier:
-                pred = classifier.predict([processed_text])[0]
-                category = "Produtivo" if pred == 1 else "Improdutivo"
-            else:
-                
-                keywords = ["ajuda", "erro", "suporte", "acesso", "problema"]
-                category = "Produtivo" if any(word in processed_text for word in keywords) else "Improdutivo"
-
-           
-            response = RESPONSES.get(category, "Resposta automática padrão.")
+     try:
     
-    return render_template("index.html", category=category, response=response, email_text=email_text)
+        return render_template("index.html", category=category, response=response, email_text=email_text)
+    except Exception as e:
+        app.logger.error(f"Erro ao renderizar template: {e}")
+        return f"Erro interno: {e}", 500
 
+  
