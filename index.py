@@ -33,6 +33,8 @@ def index():
     category = None
     response = None
     email_text = ""
+    
+    print("certo1")
 
     if request.method == "POST":
        
@@ -62,9 +64,10 @@ def index():
 
            
             response = RESPONSES.get(category, "Resposta automática padrão.")
-
+    print("certo1")
     return render_template("index.html", category=category, response=response, email_text=email_text)
 
+    print("certo1")
 
 
 if __name__ == "__main__":
