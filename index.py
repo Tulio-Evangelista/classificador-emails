@@ -70,5 +70,6 @@ def index():
     
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if _name_ != "_main_":
+    # O Vercel vai procurar pelo objeto 'app'
+    application = app
